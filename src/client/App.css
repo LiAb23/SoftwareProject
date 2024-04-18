@@ -1,0 +1,78 @@
+/**
+ *
+ *
+ * @author Liv <lh224hh@student.lnu.se>
+ * @version 1.0.0
+ */
+
+/* CSS for the App component */
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(240, 240, 255, 0.834);
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-container {
+  margin-top: 30px;
+  border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
+  padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
+  margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
+  height: 500px; /* Anpassa höjden efter dina behov */
+  width: 150px; /* Anpassa bredden efter dina behov */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center; /* Centrera ikonerna horisontellt */
+  align-items: center; /* Centrera ikonerna vertikalt */
+  width: 200px; /* Anpassa bredden efter dina behov */
+  height: 80px; /* Anpassa höjden efter dina behov */
+  border-radius: 50%; /* Gör behållaren oval */
+  background-color: rgba(211, 211, 247, 0.834);
+}
+
+.icon-container > * {
+  margin: 20px; /* Lägg till ett mellanrum på 20px runt varje ikon */
+}
+
+.icon-container svg {
+  width: 25px; /* Gör ikonerna större genom att justera deras bredd */
+  height: 25px; /* Gör ikonerna större genom att justera deras höjd */
+}
+
+.bottom-container {
+  border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
+  padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
+  margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
+  margin-right: 0px; /* Justera högermarginalen för att skapa en sidofältseffekt */
+  height: 70px; /* Anpassa höjden efter dina behov */
+}
+
+.bottom-bar ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+
+.bottom-bar ul li {
+  flex-grow: 1;
+}

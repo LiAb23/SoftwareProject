@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author Liv <lh224hh@student.lnu.se>
+ * @version 1.0.0
+ */
+
+/* CSS for the entire application */
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color:grey;
+  background-color:rgba(211, 211, 247, 0.834);
+}
