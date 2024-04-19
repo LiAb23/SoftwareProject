@@ -52,7 +52,8 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model('Note', noteSchema)
 
 // Create a new note
-app.post('/', async (req, res) => {
+app.post('https://software-project-server2.vercel.app/', async (req, res) => {
+  // app.post('/', async (req, res) => {
   try {
     const { title, text } = req.body
     const note = new Note({ title, text })
