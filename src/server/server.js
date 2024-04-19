@@ -23,17 +23,21 @@ dotenv.config({ path: envPath })
 // Middleware for parsing JSON bodies for incoming requests
 app.use(express.json())
 
-app.use(cors( {
-  origin: 'https://software-project-server2.vercel.app'
-}))
+app.use(cors())
 
 // Check if DB_CONNECTION_STRING is defined
-if (!process.env.DB_CONNECTION_STRING) {
-  throw new Error('DB_CONNECTION_STRING is not defined')
+// if (!process.env.DB_CONNECTION_STRING) {
+//   throw new Error('DB_CONNECTION_STRING is not defined')
+// }
+
+// Check if DB_CONNECTION_STRING is defined
+if (!process.env.MONGODB_URI) { // ny
+  throw new Error('MONGODB_URI is not defined')
 }
 
 // Try connecting to MongoDB
-mongoose.connect(process.env.DB_CONNECTION_STRING)
+// mongoose.connect(process.env.DB_CONNECTION_STRING)
+mongoose.connect(process.env.MONGODB_URI) // ny
   .then(() => {
   console.log('Connected to MongoDB')
 }).catch((error) => {
@@ -54,8 +58,7 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model('Note', noteSchema)
 
 // Create a new note
-app.post('https://software-project-server2.vercel.app/', async (req, res) => { // ny
-  // app.post('/', async (req, res) => {
+app.post('/', async (req, res) => {
   try {
     const { title, text } = req.body
     const note = new Note({ title, text })
