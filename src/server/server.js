@@ -23,7 +23,7 @@ dotenv.config({ path: envPath })
 // Middleware for parsing JSON bodies for incoming requests
 app.use(express.json())
 
-const allowedOrigins = [ 'https://software-project-joji.vercel.app/' ] // ny
+const allowedOrigins = [ 'https://software-project-joji.vercel.app/', 'https://software-project-joji-koqwrjht9-livs-projects-76915312.vercel.app' ] // ny
 
 app.use(cors({ // ny
   origin: function (origin, callback) {
