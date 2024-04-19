@@ -23,7 +23,20 @@ dotenv.config({ path: envPath })
 // Middleware for parsing JSON bodies for incoming requests
 app.use(express.json())
 
-app.use(cors())
+const allowedOrigins = [ 'https://software-project-joji.vercel.app/' ] // ny
+
+app.use(cors({ // ny
+  origin: function (origin, callback) {
+    // Kontrollera om ursprunget är i listan över tillåtna ursprung
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
+// app.use(cors())
 
 // Check if DB_CONNECTION_STRING is defined
 // if (!process.env.DB_CONNECTION_STRING) {
