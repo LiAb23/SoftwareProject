@@ -23,7 +23,9 @@ dotenv.config({ path: envPath })
 // Middleware for parsing JSON bodies for incoming requests
 app.use(express.json())
 
-app.use(cors())
+app.use(cors( {
+  origin: 'https://software-project-server2.vercel.app'
+}))
 
 // Check if DB_CONNECTION_STRING is defined
 if (!process.env.DB_CONNECTION_STRING) {
@@ -52,7 +54,7 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model('Note', noteSchema)
 
 // Create a new note
-app.post('https://software-project-server2.vercel.app/', async (req, res) => {
+app.post('https://software-project-server2.vercel.app/', async (req, res) => { // ny
   // app.post('/', async (req, res) => {
   try {
     const { title, text } = req.body
