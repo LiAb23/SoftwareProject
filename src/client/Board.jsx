@@ -40,25 +40,27 @@ export default function Board() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div style={{ maxWidth: '180px', margin: '0 auto' }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <input
             type="text"
-            placeholder="Enter title"
+            placeholder="Note title"
             value={titleValue}
             onChange={(e) => setTitleValue(e.target.value)}
+            style={{ marginBottom: '10px' }}
           />
           <input
             type="text"
-            placeholder="Enter text"
+            placeholder="Note text"
             value={textValue}
             onChange={(e) => setTextValue(e.target.value)}
+            style={{ marginBottom: '10px', height: '60px'}}
           />
-        <button type="submit" className="btn btn-primary">Save note</button>
-        {successMessage && <p>{successMessage}</p>}
+        <button type="submit" className="btn btn-primary" style={{ width: '100px' }}>Add note</button>
       </form>
-      <FaRegStar />
-      <FaPen />
-    </div>
+      {successMessage && <p>{successMessage}</p>}
+      {/* <FaRegStar />
+      <FaPen /> */}
+       </div>
   )
 }
