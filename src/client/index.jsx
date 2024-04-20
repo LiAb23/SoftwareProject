@@ -24,8 +24,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <p></p>
       </div>
     <App />
-    
-    <footer style={{ marginTop: 'auto', width: '100%', textAlign: 'left', padding: '10px' }}> &copy; 2024 Liv Åberg LNU
+
+    <footer style={{ marginTop: '0px', width: '100%', textAlign: 'left', padding: '10px' }}> &copy; 2024 Liv Åberg LNU
       </footer>
     </div>
   </React.StrictMode>,
