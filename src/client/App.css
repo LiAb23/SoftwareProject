@@ -23,7 +23,7 @@
 }
 
 .side-container {
-  margin-top: 30px;
+  margin-top: -150px;
   background-color: rgba(245, 245, 255, 0.834);
   border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
@@ -84,4 +84,9 @@
 
 .bottom-bar ul li {
   flex-grow: 1;
+}
+
+.btn btn-primary {
+  cursor: pointer;
+  width: auto;
 }
