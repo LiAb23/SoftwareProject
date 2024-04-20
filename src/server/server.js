@@ -24,30 +24,36 @@ dotenv.config({ path: envPath })
 app.use(express.json())
 
 // Cors configuration
-app.use((req, res, next) => { // ny
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  // Allow preflight requests to pass through
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-  } else {
-    next();
-  }
-});
+// app.use((req, res, next) => { // ny
+//   console.log('Request headers:', req.headers) // ny
+//   console.log('Request origin:', req.headers.origin) // ny
+//   res.header('Access-Control-Allow-Origin', '*'); // ändra?
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   // Allow preflight requests to pass through
+//   if (req.method === 'OPTIONS') {
+//     res.sendStatus(200);
+//   } else {
+//     next();
+//   }
+// });
 
-const allowedOrigins = [ 'https://software-project-liard.vercel.app/', 'https://software-project-joji-koqwrjht9-livs-projects-76915312.vercel.app' ] // ny
+// const allowedOrigins = [ 'https://software-project-liard.vercel.app/', 'https://software-project-joji-koqwrjht9-livs-projects-76915312.vercel.app', 'http://localhost:5173' ] // ny
 
-app.use(cors({ // ny
-  origin: function (origin, callback) {
-    // Kontrollera om ursprunget är i listan över tillåtna ursprung
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+app.use(cors(
+//   { // ny
+//   origin: function (origin, callback) {
+//     // Kontrollera om ursprunget är i listan över tillåtna ursprung
+//     console.log('Request origin:', origin)
+
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   }
+// }
+));
 
 // app.use(cors())
 
@@ -105,8 +111,12 @@ app.get('/', async (req, res) => {
   }
 })
 
-  // Start the HTTP server listening for connections
-  const server = app.listen(process.env.PORT, () => {
-    console.log(`\nServer running at http://localhost:${server.address().port}`)
+  // // Start the HTTP server listening for connections
+  // const server = app.listen(process.env.PORT, () => {
+  //   console.log(`\nServer running at http://localhost:${server.address().port}`)
+  //   console.log('Press Ctrl-C to terminate...')
+  //    // Start the HTTP server listening for connections
+  const server = app.listen('https://software-project-liard.vercel.app/', () => {
+    console.log(`\nServer running at https://software-project-liard.vercel.app/`)
     console.log('Press Ctrl-C to terminate...')
   })
