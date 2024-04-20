@@ -14,13 +14,15 @@ import { FaSistrix } from 'react-icons/fa'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-    <div>
+      <div style={{ padding: '10px' }}>
       <h1>My noteboard</h1>
-      <input type="text" placeholder="Sök..." />
-      < FaSistrix />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+      <input type="text" placeholder="Search" style={{ marginRight: '7px' }} />
+      < FaSistrix style={{ fontSize: '20px' }} />
       <p></p>
+      </div>
     <App />
-    </div>
 
     <footer style={{ marginTop: 'auto', width: '100%', textAlign: 'left', padding: '10px' }}> &copy; 2024 Liv Åberg LNU
       </footer>
