@@ -111,12 +111,8 @@ app.get('/', async (req, res) => {
   }
 })
 
-  // // Start the HTTP server listening for connections
-  // const server = app.listen(process.env.PORT, () => {
-  //   console.log(`\nServer running at http://localhost:${server.address().port}`)
-  //   console.log('Press Ctrl-C to terminate...')
-  //    // Start the HTTP server listening for connections
-  const server = app.listen('https://software-project-liard.vercel.app/', () => {
-    console.log(`\nServer running at https://software-project-liard.vercel.app/`)
+  // Start the HTTP server listening for connections
+  const server = app.listen(process.env.PORT, () => {
+    console.log(`\nServer running at http://localhost:${server.address().port}`)
     console.log('Press Ctrl-C to terminate...')
   })
