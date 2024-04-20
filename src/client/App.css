@@ -24,11 +24,19 @@
 
 .side-container {
   margin-top: 30px;
+  background-color: rgba(245, 245, 255, 0.834);
   border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
   margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
   height: 500px; /* Anpassa höjden efter dina behov */
   width: 150px; /* Anpassa bredden efter dina behov */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.down-arrow {
+  margin-top: auto; /* Placerar pilen längst ned i side-container */
 }
 
 .container {
@@ -61,6 +69,7 @@
 .bottom-container {
   border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
+  background-color: rgba(245, 245, 255, 0.834);
   margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
   margin-right: 0px; /* Justera högermarginalen för att skapa en sidofältseffekt */
   height: 70px; /* Anpassa höjden efter dina behov */

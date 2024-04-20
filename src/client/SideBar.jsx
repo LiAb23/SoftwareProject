@@ -7,7 +7,9 @@ export default function SideBar() {
     <div className="side-container">
     <div className="side-bar">
       <h2>My lists:</h2>
-      <FaAngleDown />
+      </div>
+      <div className="down-arrow">
+      <FaAngleDown style={{ fontSize: '20px' }} />
     </div>
     </div>
   )
