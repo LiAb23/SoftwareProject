@@ -23,11 +23,6 @@ dotenv.config({ path: envPath })
 // Middleware for parsing JSON bodies for incoming requests
 app.use(express.json())
 
-app.use((req, res, next) => {
-  console.log(`${req.method} request to ${req.path}`);
-  next();
-});
-
 // Cors configuration
 // app.use((req, res, next) => { // ny
 //   console.log('Request headers:', req.headers) // ny
@@ -46,7 +41,7 @@ app.use((req, res, next) => {
 
 // const allowedOrigins = [ 'https://software-project-liard.vercel.app/' ] // ny
 
-app.use(cors(
+// app.use(cors(
 //   { // ny
 //   origin: function (origin, callback) {
 //     // Kontrollera om ursprunget är i listan över tillåtna ursprung
@@ -59,7 +54,7 @@ app.use(cors(
 //     }
 //   }
 // }
-));
+// ));
 
 // app.use(cors())
 
