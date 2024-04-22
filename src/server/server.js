@@ -23,11 +23,16 @@ dotenv.config({ path: envPath })
 // Middleware for parsing JSON bodies for incoming requests
 app.use(express.json())
 
-// // Cors configuration
+app.use((req, res, next) => {
+  console.log(`${req.method} request to ${req.path}`);
+  next();
+});
+
+// Cors configuration
 // app.use((req, res, next) => { // ny
 //   console.log('Request headers:', req.headers) // ny
 //   console.log('Request origin:', req.headers.origin) // ny
-//   // res.header('Access-Control-Allow-Origin', '*'); // ändra?
+//   res.header('Access-Control-Allow-Origin', '*'); // ändra?
 //   res.header('Access-Control-Allow-Origin', 'https://software-project-liard.vercel.app/'); // ändra?
 //   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 //   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -41,7 +46,7 @@ app.use(express.json())
 
 // const allowedOrigins = [ 'https://software-project-liard.vercel.app/' ] // ny
 
-// app.use(cors(
+app.use(cors(
 //   { // ny
 //   origin: function (origin, callback) {
 //     // Kontrollera om ursprunget är i listan över tillåtna ursprung
@@ -54,7 +59,7 @@ app.use(express.json())
 //     }
 //   }
 // }
-// ));
+));
 
 // app.use(cors())
 
@@ -104,12 +109,17 @@ const noteSchema = new mongoose.Schema({
 // Create a Mongoose model for notes based on the schema
 const Note = mongoose.model('Note', noteSchema)
 
+// const dataApiKey = process.env.DATA_API_KEY
+// const dataApiUrl = process.env.DATA_API_URL
+
 // Create a new note
 app.post('/', async (req, res) => {
+  console.log('Received POST request')
   try {
     const { title, text } = req.body
     const note = new Note({ title, text })
     await note.save()
+    console.log('Note saved:', note)
     res.status(201).json(note)
   } catch (error) {
     res.status(500).json({ error: 'Error creating note' })
