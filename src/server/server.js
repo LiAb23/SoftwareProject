@@ -23,11 +23,12 @@ dotenv.config({ path: envPath })
 // Middleware for parsing JSON bodies for incoming requests
 app.use(express.json())
 
-// Cors configuration
+// // Cors configuration
 // app.use((req, res, next) => { // ny
 //   console.log('Request headers:', req.headers) // ny
 //   console.log('Request origin:', req.headers.origin) // ny
-//   res.header('Access-Control-Allow-Origin', '*'); // ändra?
+//   // res.header('Access-Control-Allow-Origin', '*'); // ändra?
+//   res.header('Access-Control-Allow-Origin', 'https://software-project-liard.vercel.app/'); // ändra?
 //   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 //   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 //   // Allow preflight requests to pass through
@@ -38,9 +39,9 @@ app.use(express.json())
 //   }
 // });
 
-// const allowedOrigins = [ 'https://software-project-liard.vercel.app/', 'https://software-project-joji-koqwrjht9-livs-projects-76915312.vercel.app', 'http://localhost:5173' ] // ny
+// const allowedOrigins = [ 'https://software-project-liard.vercel.app/' ] // ny
 
-app.use(cors(
+// app.use(cors(
 //   { // ny
 //   origin: function (origin, callback) {
 //     // Kontrollera om ursprunget är i listan över tillåtna ursprung
@@ -53,9 +54,23 @@ app.use(cors(
 //     }
 //   }
 // }
-));
+// ));
 
 // app.use(cors())
+
+// Skapa CORS-alternativ
+const corsOptions = {
+  origin: 'https://software-project-liard.vercel.app',  // eller din front-end URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200  // några äldre browsers (IE11, diverse SmartTVs) kräver detta
+};
+
+// Använd CORS med dina inställningar
+app.use(cors(corsOptions));
+
+// Lägg till en extra kontroll för preflight-anrop
+app.options('*', cors(corsOptions));  // Aktivera preflight för alla rutter
 
 // Check if DB_CONNECTION_STRING is defined
 // if (!process.env.DB_CONNECTION_STRING) {
