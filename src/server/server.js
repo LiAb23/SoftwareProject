@@ -109,12 +109,12 @@ const Note = mongoose.model('Note', noteSchema)
 
 // Create a new note
 app.post('/', async (req, res) => {
-  console.log('Received POST request')
+  // console.log('Received POST request')
   try {
     const { title, text } = req.body
     const note = new Note({ title, text })
     await note.save()
-    console.log('Note saved:', note)
+    // console.log('Note saved:', note)
     res.status(201).json(note)
   } catch (error) {
     res.status(500).json({ error: 'Error creating note' })
