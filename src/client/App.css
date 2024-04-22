@@ -15,6 +15,51 @@
   background-color: rgba(240, 240, 255, 0.834);
 }
 
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+  width: 100%;
+  padding-left: 250px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
+  background-color: rgba(245, 245, 255, 0.834);
+  border: 2px solid #ccc; /* grå ram */
+  border-radius: 8px; /* lätt rundade hörn */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
+  width: 320px; /* eller annan fast bredd efter behov */
+  height: 90px; /* eller annan fast höjd efter behov */
+  overflow: hidden;
+  padding: 20px; /* lägg till lite utfyllnad runt behållaren för utrymme */
+}
+
+.login-button {
+  cursor: pointer;
+  width: 50px;
+  height: 20px;
+  align-items: center;
+}
+
+div.login-form form {
+  display: flex;
+  flex-direction: column; /* Organiserar barn vertikalt */
+  align-items: center; /* Centrerar barnen horisontellt */
+  padding: 5px;
+}
+
+input.login-input {
+  margin-bottom: 10px; /* Lägger till lite vertikal utrymme mellan fälten */
+}
+
 .side-bar {
   display: flex;
   flex-direction: column;
@@ -26,6 +71,8 @@
   margin-top: -150px;
   background-color: rgba(245, 245, 255, 0.834);
   border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
+  border-radius: 8px; /* lätt rundade hörn */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
   margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
   height: 500px; /* Anpassa höjden efter dina behov */
@@ -55,6 +102,7 @@
   height: 80px; /* Anpassa höjden efter dina behov */
   border-radius: 50%; /* Gör behållaren oval */
   background-color: rgba(211, 211, 247, 0.834);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
 }
 
 .icon-container > * {
@@ -70,6 +118,8 @@
   border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
   background-color: rgba(245, 245, 255, 0.834);
+  border-radius: 8px; /* lätt rundade hörn */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
   margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
   margin-right: 0px; /* Justera högermarginalen för att skapa en sidofältseffekt */
   height: 70px; /* Anpassa höjden efter dina behov */

@@ -22,12 +22,14 @@ export default function Board() {
     event.preventDefault()
 
     try {
-      const response = await axios.post('http://localhost:8080', {
-      // const response = await axios.post('https://software-project-liard.vercel.app/', {
+      // const response = await axios.post('http://localhost:8080', {
+      const response = await axios.post('https://software-project-liard.vercel.app/', {
+      // const response = await axios.post('https://data.mongodb-api.com/app/data-qvlintv/endpoint/data/v1', {
         title: titleValue,
         text: textValue,
       })
       console.log('Saved note:', response.data)
+      console.log('Data saved to:', response.data.data)
       setTitleValue('') // Återställ inmatningsvärdet efter att ha sparat
       setTextValue('') // Återställ inmatningsvärdet efter att ha sparat
       setSuccessMessage('Your text was successfully saved.') // Visa meddelande om lyckad sparning
@@ -43,21 +45,22 @@ export default function Board() {
   return (
     <div style={{ maxWidth: '180px', margin: '0 auto' }}>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <h2>Add your note</h2>
           <input
             type="text"
-            placeholder="Note title"
+            placeholder="Title"
             value={titleValue}
             onChange={(e) => setTitleValue(e.target.value)}
             style={{ marginBottom: '10px' }}
           />
           <input
             type="text"
-            placeholder="Note text"
+            placeholder="Text"
             value={textValue}
             onChange={(e) => setTextValue(e.target.value)}
             style={{ marginBottom: '10px', height: '60px'}}
           />
-        <button type="submit" className="btn btn-primary" style={{ width: '100px' }}>Add note</button>
+        <button type="submit" className="btn btn-primary" style={{ width: '100px' }}>Add</button>
       </form>
       {successMessage && <p>{successMessage}</p>}
       {/* <FaRegStar />
