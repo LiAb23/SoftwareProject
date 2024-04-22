@@ -27,11 +27,11 @@ export default function Board() {
         title: titleValue,
         text: textValue,
       })
-      console.log('Saved note:', response.data)
-      console.log('Data saved to:', response.data.data)
+      // console.log('Saved note:', response.data)
+      // console.log('Data saved to:', response.data.data)
       setTitleValue('') // Återställ inmatningsvärdet efter att ha sparat
       setTextValue('') // Återställ inmatningsvärdet efter att ha sparat
-      setSuccessMessage('Your text was successfully saved.') // Visa meddelande om lyckad sparning
+      setSuccessMessage('Your note was successfully saved.') // Visa meddelande om lyckad sparning
       // Visa meddelandet i 2 sekunder innan det försvinner
       setTimeout(() => {
         setSuccessMessage('')
