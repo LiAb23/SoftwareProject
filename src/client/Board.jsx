@@ -22,9 +22,8 @@ export default function Board() {
     event.preventDefault()
 
     try {
-      // const response = await axios.post('http://localhost:8080', {
-      const response = await axios.post('https://software-project-liard.vercel.app/', {
-      // const response = await axios.post('https://data.mongodb-api.com/app/data-qvlintv/endpoint/data/v1', {
+      const response = await axios.post('http://localhost:8080', {
+      // const response = await axios.post('https://software-project-liard.vercel.app/', {
         title: titleValue,
         text: textValue,
       })
