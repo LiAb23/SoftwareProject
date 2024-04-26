@@ -51,7 +51,7 @@ export default function Board() {
     <div className="container">
     <div>
       <form onSubmit={handleSubmit} className="note-form">
-        <h2>Add a new note</h2>
+        <h2>Add new note</h2>
           <input
             type="text"
             placeholder="Title"
