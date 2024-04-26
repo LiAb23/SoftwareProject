@@ -6,12 +6,10 @@
  */
 
 import React, { useState } from 'react';
-import './App.css'; // Säkerställ att dina stilmallar är korrekt länkade
-import './App.css'
+import './AppStyles.css'; // Säkerställ att dina stilmallar är korrekt länkade
+import './AppStyles.css'
 import Board from './Board.jsx'
-import SideBar from './SideBar.jsx'
-import BottomBar from './BottomBar'
-import { FaRegPlusSquare, FaRegTrashAlt, FaSistrix, FaCog } from 'react-icons/fa'
+import { FaSistrix, FaCog } from 'react-icons/fa'
 
 // A component
 
@@ -31,7 +29,7 @@ export default function App() {
         <h1>My noteboard</h1>
         <div className="login-container">
           {!showLoginForm && (
-      <button className="login-button"onClick={toggleLoginForm}>
+      <button className="btn"onClick={toggleLoginForm}>
         Login
       </button>
       )}
@@ -56,14 +54,6 @@ export default function App() {
       <p></p>
       </div>
       <Board />
-        <SideBar />
-    <div className="container">
-      <div className="icon-container">
-      <FaRegPlusSquare />
-      <FaRegTrashAlt />
-      </div>
-    </div>
-    <BottomBar />
     </div>
   )
 }

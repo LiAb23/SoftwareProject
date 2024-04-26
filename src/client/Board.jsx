@@ -6,8 +6,11 @@
  */
 
 import { useState } from 'react'
-import axios from 'axios' 
-import { FaPen, FaRegStar } from 'react-icons/fa'
+import axios from 'axios'
+import './BoardStyles.css'
+import SideBar from './SideBar.jsx'
+import BottomBar from './BottomBar' 
+import { FaRegPlusSquare, FaRegTrashAlt, FaPen, FaRegStar } from 'react-icons/fa'
 
 // A component
 
@@ -42,28 +45,40 @@ export default function Board() {
   }
 
   return (
-    <div style={{ maxWidth: '180px', margin: '0 auto' }}>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <>
+    <div className="container">
+    <SideBar />
+    <div>
+      <form onSubmit={handleSubmit} className="note-form">
         <h2>Add your note</h2>
           <input
             type="text"
             placeholder="Title"
             value={titleValue}
             onChange={(e) => setTitleValue(e.target.value)}
-            style={{ marginBottom: '10px' }}
+            className="form-field"
           />
           <input
             type="text"
             placeholder="Text"
             value={textValue}
             onChange={(e) => setTextValue(e.target.value)}
-            style={{ marginBottom: '10px', height: '60px'}}
+            className="form-field"
           />
-        <button type="submit" className="btn btn-primary" style={{ width: '100px' }}>Add</button>
+        <button type="submit" className="btn">Add</button>
       </form>
       {successMessage && <p>{successMessage}</p>}
       {/* <FaRegStar />
-      <FaPen /> */}
-       </div>
+      <FaPen /> */} 
+    <div className="icon-container">
+      <div className="icons">
+      <FaRegPlusSquare />
+      <FaRegTrashAlt />
+      </div>
+    </div>
+    </div>
+    </div>
+    <BottomBar />
+    </>
   )
 }

@@ -1,0 +1,115 @@
+/**
+ *
+ *
+ * @author Liv <lh224hh@student.lnu.se>
+ * @version 1.0.0
+ */
+
+/* CSS for the Board component */
+
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 20px;
+  background-color: rosybrown;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0px; /* Justera toppmarginalen för att skapa en sidofältseffekt */
+  background-color: rgba(245, 245, 255, 0.834);
+  border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
+  border-radius: 8px; /* lätt rundade hörn */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
+  padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
+  margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
+  height: 400px; /* Anpassa höjden efter dina behov */
+  width: 150px; /* Anpassa bredden efter dina behov */
+}
+
+.down-arrow {
+  margin-top: auto; /* Placerar pilen längst ned i side-bar */
+  font-size: 20px;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column; /* Organiserar barn vertikalt */
+  align-items: center; /* Centrerar barnen horisontellt */
+  justify-content: center;
+  padding: 20px;
+  background-color: rgb(184, 198, 238);
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center; /* Centrera ikonerna horisontellt */
+  align-items: center;
+  align-self: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: center; /* Centrera ikonerna horisontellt */
+  align-items: center; /* Centrera ikonerna vertikalt */
+  width: 200px; /* Anpassa bredden efter dina behov */
+  height: 80px; /* Anpassa höjden efter dina behov */
+  border-radius: 50%; /* Gör behållaren oval */
+  background-color: rgba(211, 211, 247, 0.834);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
+}
+
+.icon-container > * {
+  margin: 20px; /* Lägg till ett mellanrum på 20px runt varje ikon */
+}
+
+.icon-container svg {
+  width: 25px; /* Gör ikonerna större genom att justera deras bredd */
+  height: 25px; /* Gör ikonerna större genom att justera deras höjd */
+}
+
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
+  padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
+  background-color: rgba(245, 245, 255, 0.834);
+  border-radius: 8px; /* lätt rundade hörn */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
+  height: 70px; /* Anpassa höjden efter dina behov */
+}
+
+.right-arrow {
+  font-size: 20px;
+  /* margin-left: auto; */
+}
+
+.left-arrow {
+  font-size: 20px;
+  /* margin-right: auto; */
+}
+
+.bottom-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bottom-list li {
+  display: flex; /* Använd flexbox för att justera layouten inuti listan */
+  align-items: center; /* Centrera innehållet vertikalt */
+}
+
+.bottom-list ul {
+  display: flex;
+  list-style: none;
+}

@@ -1,0 +1,73 @@
+/**
+ *
+ *
+ * @author Liv <lh224hh@student.lnu.se>
+ * @version 1.0.0
+ */
+
+/* CSS for the App component */
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(240, 240, 255, 0.834);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+  width: 100%;
+  padding-left: 250px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
+  background-color: rgba(245, 245, 255, 0.834);
+  border: 2px solid #ccc; /* grå ram */
+  border-radius: 8px; /* lätt rundade hörn */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
+  width: 320px; /* eller annan fast bredd efter behov */
+  height: 90px; /* eller annan fast höjd efter behov */
+  overflow: hidden;
+  padding: 20px; /* lägg till lite utfyllnad runt behållaren för utrymme */
+}
+
+.btn {
+  cursor: pointer;
+  width: 50px;
+  height: 20px;
+  align-items: center;
+}
+
+div.login-form form {
+  display: flex;
+  flex-direction: column; /* Organiserar barn vertikalt */
+  align-items: center; /* Centrerar barnen horisontellt */
+  padding: 5px;
+}
+
+input.login-input {
+  margin-bottom: 10px; /* Lägger till lite vertikal utrymme mellan fälten */
+}
+
+.btn{
+  cursor: pointer;
+  width: auto;
+  width: 100px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
