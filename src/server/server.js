@@ -94,7 +94,10 @@ mongoose.connect(process.env.MONGODB_URI) // ny
 
 // Define a Mongoose schema for notes
 const noteSchema = new mongoose.Schema({
-  title: String, 
+  title: { 
+    type: String,
+    required: true
+  },
   text: String,
 }, {
   // Add and maintain createdAt and updatedAt fields.
