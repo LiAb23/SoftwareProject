@@ -7,12 +7,16 @@
 
 /* CSS for the Board component */
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Skapa en kolumn för side-bar och en för huvudinnehållet */
+}
+
 .container {
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  margin-top: 20px;
-  background-color: rosybrown;
+  justify-content: center;
+  align-items: bottom;
 }
 
 .side-bar {
@@ -27,8 +31,8 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
   margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
-  height: 400px; /* Anpassa höjden efter dina behov */
-  width: 150px; /* Anpassa bredden efter dina behov */
+  height: 500px; /* Anpassa höjden efter dina behov */
+  width: 200px; /* Anpassa bredden efter dina behov */
 }
 
 .down-arrow {
@@ -42,14 +46,21 @@
   align-items: center; /* Centrerar barnen horisontellt */
   justify-content: center;
   padding: 20px;
-  background-color: rgb(184, 198, 238);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -230px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-field {
+  margin-bottom: 10px;
 }
 
 .icon-container {
-  display: flex;
-  justify-content: center; /* Centrera ikonerna horisontellt */
-  align-items: center;
-  align-self: center;
+  margin-left: -230px;
 }
 
 .icons {

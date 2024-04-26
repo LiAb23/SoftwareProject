@@ -8,7 +8,7 @@
 /* CSS for the App component */
 
 #root {
-  max-width: 1280px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -22,31 +22,26 @@
   padding: 10px;
 }
 
-h1 {
-  text-align: center;
-  width: 100%;
-  padding-left: 250px;
-}
-
-.login-container {
-  display: flex;
-  justify-content: center;
+.picture-container {
   margin-right: 20px;
-  background-color: rgba(245, 245, 255, 0.834);
-  border: 2px solid #ccc; /* grå ram */
-  border-radius: 8px; /* lätt rundade hörn */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
+  /* border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
   width: 320px; /* eller annan fast bredd efter behov */
-  height: 90px; /* eller annan fast höjd efter behov */
+  height: 72px; /* eller annan fast höjd efter behov */
   overflow: hidden;
   padding: 20px; /* lägg till lite utfyllnad runt behållaren för utrymme */
 }
 
-.btn {
-  cursor: pointer;
-  width: 50px;
-  height: 20px;
-  align-items: center;
+.login-container {
+  margin-right: 20px;
+  /* border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+  width: 320px; /* eller annan fast bredd efter behov */
+  height: 72px; /* eller annan fast höjd efter behov */
+  overflow: hidden;
+  padding: 20px; /* lägg till lite utfyllnad runt behållaren för utrymme */
 }
 
 div.login-form form {
@@ -60,14 +55,32 @@ input.login-input {
   margin-bottom: 10px; /* Lägger till lite vertikal utrymme mellan fälten */
 }
 
-.btn{
+.btn {
   cursor: pointer;
-  width: auto;
-  width: 100px;
+  width: 60px;
+  height: 20px;
+  align-items: center;
 }
 
-.form-field {
+.cog-icon {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.search-icon {
+  padding-left: 10px;
+  font-size: 22px;
+}
+
+.search-form {
+  display: flex; 
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.start-icons {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  align-items: flex-end;
 }
+

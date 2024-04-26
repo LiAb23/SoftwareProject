@@ -23,37 +23,37 @@ export default function App() {
   };
 
   return (
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-       <div className="header-container">
-        <div style={{ flex: 1 }}></div> {/* Lämnar plats för att centrera rubriken */}
-        <h1>My noteboard</h1>
-        <div className="login-container">
-          {!showLoginForm && (
-      <button className="btn"onClick={toggleLoginForm}>
-        Login
-      </button>
-      )}
-      {showLoginForm && (
-        <div className="login-form">
-          <form>
-            <input type="text" placeholder="Username" className="login-input" />
-            <input type="password" placeholder="Password" className="login-input" />
-            <button type="button" onClick={toggleLoginForm}>Login</button>
-          </form>
-        </div>
-      )}
-      </div>
-      <div style={{ flex: 1 }}></div> {/* Tom dummy-div till höger, kan tas bort om inte nödvändig */}
-    </div>
     <div>
-      < FaCog style={{ marginLeft : '1200px', fontSize: '20px' }} />
+    <div className="header-container">
+      <div className="picture-container"></div>
+      <h1>My noteboard</h1>
+      <div className="login-container">
+        {!showLoginForm && (
+          <button className="btn" onClick={toggleLoginForm}>
+            Login
+          </button>
+        )}
+        {showLoginForm && (
+          <div className="login-form">
+            <form>
+              <input type="text" placeholder="Username" className="login-input" />
+              <input type="password" placeholder="Password" className="login-input" />
+              <button type="button" onClick={toggleLoginForm}>Login</button>
+            </form>
+          </div>
+        )}
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-      <input type="text" placeholder="Search" style={{ marginRight: '7px' }} />
-      < FaSistrix style={{ fontSize: '20px' }} />
-      <p></p>
-      </div>
-      <Board />
     </div>
+    <div className="start-icons">
+      <div>
+        <FaCog className="cog-icon" />
+      </div>
+      <div className="search-form">
+        <input type="text" placeholder="Search" />
+        <FaSistrix className="search-icon" />
+      </div>
+    </div>
+    <Board />
+  </div>
   )
 }

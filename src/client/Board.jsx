@@ -46,11 +46,12 @@ export default function Board() {
 
   return (
     <>
-    <div className="container">
+    <div className="grid-container">
     <SideBar />
+    <div className="container">
     <div>
       <form onSubmit={handleSubmit} className="note-form">
-        <h2>Add your note</h2>
+        <h2>Add a new note</h2>
           <input
             type="text"
             placeholder="Title"
@@ -75,6 +76,7 @@ export default function Board() {
       <FaRegPlusSquare />
       <FaRegTrashAlt />
       </div>
+    </div>
     </div>
     </div>
     </div>
