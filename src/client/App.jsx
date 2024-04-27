@@ -48,9 +48,11 @@ export default function App() {
       <div>
         <FaCog className="cog-icon" />
       </div>
-      <div className="search-form">
-        <input type="text" placeholder="Search" />
+      <div className="search-form" >
+        <div className="search-icon-wrapper">
         <FaSistrix className="search-icon" />
+        </div>
+        <input type="text" placeholder="Search" />
       </div>
     </div>
     <Board />
