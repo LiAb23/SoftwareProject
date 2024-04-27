@@ -13,7 +13,7 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <App style={{ padding: '0' }} /> {/* Justera paddingen runt App */}
+    <App style={{ padding: '500' }} /> {/* Justera paddingen runt App */}
 
     <footer style={{ marginTop: 'auto', width: '100%', textAlign: 'left', padding: '10px' }}> &copy; 2024 LNU
       </footer>
