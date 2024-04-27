@@ -31,7 +31,7 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
   margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
-  height: 60%; /* Anpassa höjden efter dina behov */
+  height: 400px; /* Anpassa höjden efter dina behov */
   width: 200px; /* Anpassa bredden efter dina behov */
 }
 
@@ -92,7 +92,7 @@
   background-color: rgba(245, 245, 255, 0.834);
   border-radius: 8px; /* lätt rundade hörn */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
-  height: 70px; /* Anpassa höjden efter dina behov */
+  height: 75px; /* Anpassa höjden efter dina behov */
   /* width: 80%; */
 }
 
