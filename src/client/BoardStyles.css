@@ -79,7 +79,7 @@
 }
 
 .icon-container svg {
-  width: 25px; /* Gör ikonerna större genom att justera deras bredd */
+  width: 55px; /* Gör ikonerna större genom att justera deras bredd */
   height: 25px; /* Gör ikonerna större genom att justera deras höjd */
 }
 
