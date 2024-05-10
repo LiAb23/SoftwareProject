@@ -1,0 +1,124 @@
+.sticky-note {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  box-shadow: 8px 12px 12px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  margin: 10px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  word-wrap: break-word;
+  transform: rotate(
+    1deg
+  );
+  cursor: pointer;
+}
+
+.yellow {
+  background-color: #fefdb0;
+  border: 1px solid #fefda1;
+}
+
+.pink {
+  background-color: rgb(238, 188, 238);
+  border: 1px solid rgb(230, 180, 230);
+}
+
+.blue {
+  background-color: rgb(164, 225, 254);
+  border: 1px solid rgb(154, 215, 244);
+}
+
+.sticky-note h3 {
+  font-size: 18px;
+  color: #333;
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Antal rader innan klippning */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-note p {
+  padding-left: 12px;
+  padding-right: 8px;
+  padding-bottom: 20px;
+  margin-top: 60px;
+  font-size: 14px;
+  color: #555;
+  max-height: 85px;
+  overflow-y: auto;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Antal rader innan klippning */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+/* tejp */
+.sticky-note::before {
+  content: "";
+  position: absolute;
+  top: -10px; /* Justera dessa värden beroende på den önskade effekten */
+  left: 38%; /* Centrerar tejpen */
+  width: 60px; /* Bredden på tejpen */
+  height: 20px; /* Höjden på tejpen */
+  background-color: #efbfbf; /* Tejpens färg */
+  opacity: 0.5; /* Tejpens genomskinlighet för en realistisk look */
+  transform: rotate(
+    -25deg
+  ); /* Lägg till en liten vinkel för att simulera tejpen */
+}
+
+.timestamp-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.timestamp-text {
+  font-size: 14px;
+  color: #555;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #555;
+}
+
+.star-icon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 20px;
+}
+
+.star-icon:hover {
+  font-size: 25px; /* Ändra storleken när muspekaren sveper över ikonen */
+}
+
+.pen-icon {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.pen-icon:hover {
+  font-size: 25px; /* Ändra storleken när muspekaren sveper över ikonen */
+}
+

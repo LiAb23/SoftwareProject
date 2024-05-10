@@ -6,11 +6,14 @@
  */
 
 import express from "express"
+import session from "express-session"
 import helmet from "helmet"
 import mongoose from "mongoose"
 import path from "path"
 import dotenv from "dotenv"
 import cors from "cors"
+import Note from "./Note.js"
+import User from "./User.js"
 
 // Create a new express application instance
 const app = express()
@@ -18,19 +21,40 @@ const PORT = process.env.PORT || 5000
 // Konstruera sökvägen till .env-filen
 const envPath = path.resolve(process.cwd(), ".env")
 
+// Ladda in miljövariabler från .env-filen
+dotenv.config({ path: envPath })
+
+// Konfigurera sessions
+const sessionOptions = {
+    name: process.env.SESSION_NAME, // Don't use default session cookie name.
+    secret: process.env.SESSION_SECRET, // En hemlig nyckel för att signera session-id:erna
+    resave: false, // Spara inte sessionen om den inte ändras
+    saveUninitialized: false, // Spara inte sessionen om den inte har ändrats
+    cookie: {
+      httpOnly: true, // Mitigate the risk of client side script accessing the protected cookie.
+      maxAge: 1000 * 60 * 60 * 24, // The cookie will expire after 24 hours.
+      sameSite: "strict", // CSRF protection by preventing the browser from sending the cookie along with cross-site requests.
+    },
+  }
+
+if (process.env.NODE_ENV === "production") {
+  sessionOptions.cookie.secure = true // Serve secure cookies by only allowing HTTPS
+}
+
+app.use(session(sessionOptions))
+
 // Use helmet to secure the application by setting various HTTP headers.
 app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        'script-src': ["'self'", "'https://cdn.jsdelivr.net'"]
-      }
-    }
+        "default-src": ["'self'"],
+        "script-src": ["'self'"],
+        "style-src": ["'self'"],
+      },
+    },
   })
 )
-
-// Ladda in miljövariabler från .env-filen
-dotenv.config({ path: envPath })
 
 // Middleware for parsing JSON bodies for incoming requests
 app.use(express.json())
@@ -72,7 +96,7 @@ app.use(express.json())
 
 // Skapa CORS-alternativ
 const corsOptions = {
-  origin: "https://software-project-liard.vercel.app", // eller din front-end URL
+  origin: "http://localhost:5173", // eller din front-end URL // "https://software-project-liard.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200, // några äldre browsers (IE11, diverse SmartTVs) kräver detta
@@ -107,48 +131,101 @@ mongoose
     process.exit(1)
   })
 
-// Define a Mongoose schema for notes
-const noteSchema = new mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-    text: String,
-  },
-  {
-    // Add and maintain createdAt and updatedAt fields.
-    timestamps: true,
-  },
-)
-
-// Create a Mongoose model for notes based on the schema
-const Note = mongoose.model("Note", noteSchema)
-
 // const dataApiKey = process.env.DATA_API_KEY
 // const dataApiUrl = process.env.DATA_API_URL
 
 // Create a new note
 app.post("/", async (req, res) => {
-  // console.log('Received POST request')
   try {
     const { title, text } = req.body
     const note = new Note({ title, text })
     await note.save()
-    // console.log('Note saved:', note)
     res.status(201).json(note)
   } catch (error) {
     res.status(500).json({ error: "Error creating note" })
   }
 })
 
-// Fetch all notes
-app.get("/", async (req, res) => {
+// Hantera användarregistrering
+app.post("/register", async (req, res) => {
   try {
-    const notes = await Note.find()
-    res.json(notes)
+    // Extrahera användarinformation från förfrågningskroppen
+    const { username, password, email, termsAccepted } = req.body
+
+    // Skapa en ny användare
+    const newUser = new User({ username, password, email, termsAccepted })
+
+    // Spara den nya användaren i databasen
+    await newUser.save()
+
+    // Skicka en framgångsrik respons tillbaka till klienten
+    res.status(201).json({
+      message: "User registered successfully",
+    })
   } catch (error) {
-    res.status(500).json({ error: "Error fetching notes" })
+    // Om något går fel, skicka en felrespons tillbaka till klienten
+    console.error("Error registering user:", error)
+    res.status(500).json({ error: "Failed to register user" })
+  }
+})
+
+app.post("/login", async (req, res, next) => {
+  try {
+    console.log("Attempting to log in user:", req.body.username)
+    // Authenticate the user credentials against the database.
+    const user = await User.authenticate(req.body.username, req.body.password)
+    
+    console.log("User authenticated successfully:", user.username)
+
+    // Regenerate the session to prevent fixation attacks.
+    req.session.regenerate((err) => {
+      if (err) {
+        console.error("Failed to re-generate session:", err)
+        throw new Error("Failed to re-generate session")
+      }
+
+      console.log("Session regenerated successfully")
+
+      // Mark user is logged in and store the authenticated user in the session.
+      req.session.user = user
+
+      // // Set a flash message to indicate successful login.
+      // req.session.flash = { type: 'success', text: 'You are now logged in' }
+
+      console.log("User added to session:", user.username)
+
+      // res.redirect("./")
+      res.json({ message: `Welcome ${user.username}!` })
+    })
+  } catch (error) {
+    console.error("Error logging in user:", error)
+    // req.session.flash = { type: 'danger', text: error.message }
+    // res.redirect("./")
+  }
+})
+
+// Hämta användarens anteckningar
+app.get("/my-board", async (req, res) => {
+  try {
+    if (req.session.user) {
+      console.log("User is logged in:", req.session.user.username)
+      // Hämta alla anteckningar kopplade till den aktuella användaren
+      console.log("Session ID:", req.session.id)
+
+      console.log("User_id:", req.session.user._id)
+      const notes = await Note.find({ user: req.session.user._id })
+      console.log("User's notes:", notes)
+
+      // Skicka de hämtade anteckningarna till klienten
+      res.json(notes)
+    } else {
+      // Om användaren inte är inloggad, skicka en felrespons
+      res.status(401).json({ error: "Unauthorized: User not logged in" })
+    }
+  } catch (error) {
+    // Om något går fel, skicka en felrespons
+    console.error("Error fetching user's notes:", error)
+    res.status(500).json({ error: "Error fetching user's notes" })
   }
 })
 

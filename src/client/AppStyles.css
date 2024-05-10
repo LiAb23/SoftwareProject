@@ -34,17 +34,6 @@
   padding: 20px; /* lägg till lite utfyllnad runt behållaren för utrymme */
 }
 
-.login-container {
-  margin-right: 20px;
-  /* border: 2px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
-  width: 320px; /* eller annan fast bredd efter behov */
-  height: 72px; /* eller annan fast höjd efter behov */
-  overflow: hidden;
-  padding: 20px; /* lägg till lite utfyllnad runt behållaren för utrymme */
-}
-
 div.login-form form {
   display: flex;
   flex-direction: column; /* Organiserar barn vertikalt */
@@ -56,20 +45,41 @@ input.login-input {
   margin-bottom: 10px; /* Lägger till lite vertikal utrymme mellan fälten */
 }
 
+.link-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Bakgrundsfärg */
+  color: #fff; /* Textfärg */
+  text-decoration: none; /* Ta bort understrykning */
+  border-radius: 5px; /* Rundade kanter */
+  margin-right: 10px; /* Avstånd mellan länkarna */
+  transition: background-color 0.3s ease; /* Smidig övergång */
+  width: 80px;
+  cursor: pointer;
+}
+
+/* Styla länkarna vid hovring */
+.link-btn:hover {
+  background-color: #f4a1ed; /* Ändra bakgrundsfärgen vid hovring */
+}
+
 .btn {
   cursor: pointer;
-  width: 60px;
-  height: 20px;
+  width: auto;
+  height: auto;
   align-items: center;
+  padding: 3px 5px;
 }
 
 .cog-icon {
   font-size: 20px;
   padding-bottom: 10px;
+  cursor: pointer;
+  margin-right: 5px;
 }
 
 .search-form {
-  display: flex; 
+  display: flex;
   justify-content: center;
   padding-bottom: 20px;
 }
@@ -79,12 +89,22 @@ input.login-input {
   margin-right: -176px; /* Justera detta värde för att passa din design */
 }
 
+.search-input {
+  width: 220px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* lätt rundade hörn */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtil skugga för djup */
+}
+
 .search-icon {
   position: absolute;
   top: 50%;
-  padding-right: 6px;
   font-size: 20px;
-  transform: translate(-50%, -50%);
+  right: -55px; /* Justera detta värde enligt önskad högermarginal */
+  font-size: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .start-icons {
@@ -92,4 +112,3 @@ input.login-input {
   flex-direction: column;
   align-items: flex-end;
 }
-

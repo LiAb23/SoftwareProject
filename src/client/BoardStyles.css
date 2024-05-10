@@ -9,7 +9,11 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto 1fr; /* Skapa en kolumn för side-bar och en för huvudinnehållet */
+  grid-template-columns: 200px 1fr; /* Skapa en kolumn för side-bar och en för huvudinnehållet */
+  grid-template-rows: 1fr auto ; /* Skapa en rad för huvudinnehållet och en för bottenfältet */
+  padding-left: 200px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
+  height: calc(100vh - 75px); /* Anpassa höjden efter dina behov */
+  overflow-y: auto;
 }
 
 .container {
@@ -20,58 +24,110 @@
 }
 
 .side-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  position: fixed; /* Fäst behållaren på plats */
+  left: 80px;
+  top: 270px;
+  height: 50vh; /* Anpassa höjden efter dina behov */
   margin-top: 0px; /* Justera toppmarginalen för att skapa en sidofältseffekt */
   background-color: rgba(245, 245, 255, 0.834);
   border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
   border-radius: 8px; /* lätt rundade hörn */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtil skugga för djup */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
   margin-left: 0px; /* Justera vänstermarginalen för att skapa en sidofältseffekt */
-  height: 600px; /* Anpassa höjden efter dina behov */
   width: 200px; /* Anpassa bredden efter dina behov */
+  display: flex;
+  flex-direction: column;
+}
+
+.up-arrow {
+  margin-bottom: auto; /* Placerar pilen längst ned i side-bar */
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .down-arrow {
   margin-top: auto; /* Placerar pilen längst ned i side-bar */
   font-size: 20px;
+  cursor: pointer;
 }
 
 .note-form {
-  display: flex;
+  position: fixed;
+  top: 47%;
+  left: 50%;
   flex-direction: column; /* Organiserar barn vertikalt */
   align-items: center; /* Centrerar barnen horisontellt */
-  justify-content: center;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -230px;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(245, 245, 255);
+  transform: translate(-50%, -70%); /* Flytta formuläret uppåt */
+  width: 300px; /* Justera bredden efter dina behov */
 }
 
-.form-field {
-  margin-bottom: 10px;
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  right: 12px;
+  background-color:#f4a1ed;
+}
+
+.close-icon:hover {
+  font-size: 25px;
+}
+
+.note-form form {
+  display: flex;
+  flex-direction: column; /* Organiserar barn vertikalt */
+  align-items: center; /* Centrerar barnen horisontellt */
+  justify-content: center;
+  text-align: center;
+}
+
+.form-text {
+  margin-bottom: 5px; /* Lägger till lite vertikal utrymme mellan fälten */
+}
+
+.note-form input {
+  border: 1px solid #ccc; /* Lägger till en solid ram runt fältet */
+  border-radius: 5px; /* lätt rundade hörn */
+  width: 100%; /* Fyller ut fältet i bredd */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.note-form textarea {
+  border: 1px solid #ccc; /* Lägger till en solid ram runt fältet */
+  border-radius: 5px; /* lätt rundade hörn */
+  width: 100%; /* Fyller ut fältet i bredd */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 50px;
 }
 
 .icon-container {
-  margin-left: -230px;
+  position: fixed;
+  bottom: 205px; /* Position it just above the form */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px; /* Adjust width as needed */
+  height: 90px; /* Adjust height as needed */
+  border-radius: 50%;
+  background-color: rgba(211, 211, 247, 0.834);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.icons {
-  display: flex;
-  justify-content: center; /* Centrera ikonerna horisontellt */
-  align-items: center; /* Centrera ikonerna vertikalt */
-  width: 200px; /* Anpassa bredden efter dina behov */
-  height: 80px; /* Anpassa höjden efter dina behov */
-  border-radius: 50%; /* Gör behållaren oval */
-  background-color: rgba(211, 211, 247, 0.834);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
+.plus-icon {
+  cursor: pointer;
 }
 
 .icon-container > * {
@@ -83,27 +139,62 @@
   height: 25px; /* Gör ikonerna större genom att justera deras höjd */
 }
 
-.bottom-bar {
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(245, 245, 255, 0.834);
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  border-radius: 8px; /* lätt rundade hörn */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtil skugga för djup */
+}
+
+.modal-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+}
+
+.choice {
+  padding: 5px 10px;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.choice:hover {
+  background-color: #f4a1ed;
+}
+
+.bottom-bar {
+  position: fixed; /* Fäst behållaren längst ned på sidan? */
+  left: 140px;
+  right: 140px;
+  bottom: 80px; /* Justera bottenmarginalen för att placera behållaren längst ned på sidan */
+  height: 75px; /* Anpassa höjden efter dina behov */
   border: 2px solid #ccc; /* Ställ in en solid ram runt behållaren */
   padding: 20px; /* Lägg till lite utfyllnad runt behållaren för utrymme */
   background-color: rgba(245, 245, 255, 0.834);
   border-radius: 8px; /* lätt rundade hörn */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtil skugga för djup */
-  height: 75px; /* Anpassa höjden efter dina behov */
-  /* width: 80%; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtil skugga för djup */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .right-arrow {
   font-size: 20px;
   /* margin-left: auto; */
+  cursor: pointer;
 }
 
 .left-arrow {
   font-size: 20px;
   /* margin-right: auto; */
+  cursor: pointer;
 }
 
 .bottom-list {
