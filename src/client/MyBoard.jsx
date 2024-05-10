@@ -67,8 +67,8 @@ export default function MyBoard() {
 
     try {
       // const response = await axios.post("https://softwareproject-wu0e.onrender.com/", {
-      //const response = await axios.post("http://localhost:8080", {
-        const response = await axios.post('https://software-project-liard.vercel.app/', {
+      const response = await axios.post("http://localhost:8080", {
+        // const response = await axios.post('https://software-project-liard.vercel.app/', {
         title: titleValue,
         text: textValue,
       })
