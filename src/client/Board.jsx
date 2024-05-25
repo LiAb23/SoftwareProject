@@ -14,6 +14,7 @@ import BottomBar from "./BottomBar"
 import {
   FaRegPlusSquare,
   FaRegTrashAlt,
+  FaTimes,
 } from "react-icons/fa"
 
 // A component
@@ -52,7 +53,8 @@ export default function Board() {
     event.preventDefault()
 
     try {
-      const response = await axios.post("http://localhost:8080", {
+      // const response = 
+      await axios.post("http://localhost:8080", {
         // const response = await axios.post('https://software-project-liard.vercel.app/', {
         title: titleValue,
         text: textValue,
@@ -72,19 +74,35 @@ export default function Board() {
     }
   }
 
+  // Generera en tidsstämpel
+  const generateTimestamp = () => {
+    const currentDate = new Date()
+    const dateString = currentDate.toLocaleDateString()
+    const timeString = currentDate.toLocaleTimeString([], { 
+      hour: "2-digit", minute: "2-digit", hour12: false 
+    })
+  return `${dateString} at ${timeString}`
+}
+
   return (
     <>
       <div className="grid-container">
+        <div className="side">
         <SideBar />
+        </div>
+        <div className="main-content">
+        <div className="notes-grid">
         <StickyNote
           color="pink"
           title="Todo 1"
           text="Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor."
+          timestamp={generateTimestamp()}
         />
         <StickyNote
           color="yellow"
           title="Todo 2"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus."
+          timestamp={generateTimestamp()}
         />
         <StickyNote
           color="blue"
@@ -97,12 +115,12 @@ export default function Board() {
               Maecenas ligula massa, varius a, semper congue, euismod non, mi.
             </>
           }
+          timestamp={generateTimestamp()}
         />
-        <div className="container">
-          <div>
           {showNoteForm ? ( // Visa formuläret för att skapa anteckningen om tillståndet är sant
               <div className="note-form">
             <form onSubmit={handleSubmit}>
+            <FaTimes className="close-icon" onClick={() => setShowNoteForm(false)} />
               <h3>Add new note</h3>
               <div>
                 <p className="form-text">Title (mandatory)</p>
@@ -138,6 +156,10 @@ export default function Board() {
           {showModal && (
         <div className="modal">
           <div className="modal-content">
+          <FaTimes
+                    className="close-icon"
+                    onClick={handleModalClose}
+                  />
             <h3>What do you want to create?</h3>
             <div className="choice" onClick={() => handleNoteTypeSelection("note")}>Note</div>
             <div className="choice" onClick={() => handleNoteTypeSelection("list")}>List</div>

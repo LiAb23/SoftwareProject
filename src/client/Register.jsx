@@ -5,13 +5,13 @@
  * @version 1.0.0
  */
 
-import React, { useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./AppStyles.css"
 import "./RegisterStyles.css"
 import axios from "axios"
 
-export default function Register({ onRegister }) {
+export default function Register() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [repeatPassword, setRepeatPassword] = useState("")
@@ -37,7 +37,8 @@ export default function Register({ onRegister }) {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/register", {
+      // const response = 
+      await axios.post("http://localhost:8080/register", {
         username,
         password,
         email,
@@ -62,7 +63,7 @@ export default function Register({ onRegister }) {
 
   return (
     <div className="form-container">
-      <h1>Register as a new user</h1>
+      <h1 className="form-title">Register as a new user</h1>
       <form onSubmit={handleRegistration}>
         <div className="form-row">
           <input
@@ -71,7 +72,7 @@ export default function Register({ onRegister }) {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
             required
-            className="form-input"
+            className="form-input narrow"
           />
           <input
             type="password"
@@ -79,7 +80,7 @@ export default function Register({ onRegister }) {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
-            className="form-input"
+            className="form-input narrow"
           />
           <input
             type="password"
@@ -87,7 +88,7 @@ export default function Register({ onRegister }) {
             onChange={(e) => setRepeatPassword(e.target.value)}
             placeholder="Repeat Password"
             required
-            className="form-input"
+            className="form-input narrow"
           />
           <input
             type="email"
@@ -95,7 +96,7 @@ export default function Register({ onRegister }) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
-            className="form-input"
+            className="form-input narrow"
           />
         </div>
         <div className="form-row">
@@ -107,14 +108,14 @@ export default function Register({ onRegister }) {
               name="termsAccepted"
               required
             />
-            I accept the terms and conditions
+           <span>I accept the <span className="link-text">terms</span> and <span className="link-text">conditions</span></span>
           </label>
           <br />
         </div>
         {error && <p className="error-message">{error}</p>}
         {successMessage && <p className="success-message">{successMessage}</p>}
-        <button type="submit" className="btn">
-          Register
+        <button type="submit" className="link-btn">
+        Register
         </button>
       </form>
     </div>

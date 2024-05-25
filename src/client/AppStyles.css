@@ -12,7 +12,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: rgba(240, 240, 255, 0.834);
+  background-color: rgba(241, 234, 243, 0.987);
   height: 90vh;
 }
 
@@ -20,18 +20,59 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  /* flex-direction: column; */
 }
 
 .picture-container {
   margin-right: 20px;
-  /* border: 2px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
-  width: 320px; /* eller annan fast bredd efter behov */
-  height: 72px; /* eller annan fast höjd efter behov */
-  overflow: hidden;
-  padding: 20px; /* lägg till lite utfyllnad runt behållaren för utrymme */
+  border: 2px solid #ccc;
+}
+
+.title-container {
+  display: flex;
+  flex: 1; /* Tar upp all tillgänglig plats och därmed centrerar rubriken */
+  align-items: center;
+  justify-content: center;
+}
+
+.links-container {
+  text-align: right;
+}
+
+.user-info {
+ margin-top: 10px;
+}
+
+.img {
+  width: 20%; /* Justera storleken på bilden efter behov */
+  height: auto; /* Justera storleken på bilden efter behov */
+  display: block; /* Tar bort eventuellt utrymme under bilden */
+}
+
+.title {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.icon {
+  width: 65px;
+  height: 65px;
+}
+
+h1 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 3rem; /* Ökar storleken för en mer iögonfallande rubrik */
+  text-align: center; /* Centrerar rubriken för bättre estetik */
+  margin-bottom: 20px; /* Lägger till lite mellanrum nedanför rubriken för att skilja den från innehållet */
+  letter-spacing: 2px; /* Ökar avståndet mellan bokstäverna för ökad tydlighet */
+  font-weight: bold; /* Gör rubriken fet för att markera dess viktighet */
+}
+
+h2 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.8rem; /* Ökar storleken för en mer iögonfallande rubrik */
+  letter-spacing: 2px; /* Ökar avståndet mellan bokstäverna för ökad tydlighet */
+  font-weight: bold; /* Gör rubriken fet för att markera dess viktighet */
 }
 
 div.login-form form {
@@ -46,9 +87,9 @@ input.login-input {
 }
 
 .link-btn {
-  display: inline-block;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   padding: 10px 20px;
-  background-color: #007bff; /* Bakgrundsfärg */
+  background-color: #68c7f3; /* Bakgrundsfärg */
   color: #fff; /* Textfärg */
   text-decoration: none; /* Ta bort understrykning */
   border-radius: 5px; /* Rundade kanter */
@@ -60,7 +101,31 @@ input.login-input {
 
 /* Styla länkarna vid hovring */
 .link-btn:hover {
-  background-color: #f4a1ed; /* Ändra bakgrundsfärgen vid hovring */
+  background-color: #f3c6ef; /* Ändra bakgrundsfärgen vid hovring */
+}
+
+.btn-icon {
+  margin-left: 8px; /* Justera värdet efter behov */
+  font-size: 22px;
+}
+
+.log-message {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.username {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+}
+
+.avatar-link {
+  font-size: 40px;
+  color: #68c7f3;
+  padding-left: 5px;
+}
+
+.avatar-link:hover {
+  color: #f3c6ef;
 }
 
 .btn {
@@ -69,6 +134,13 @@ input.login-input {
   height: auto;
   align-items: center;
   padding: 3px 5px;
+}
+
+.help-icon {
+  font-size: 20px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  margin-right: 15px;
 }
 
 .cog-icon {

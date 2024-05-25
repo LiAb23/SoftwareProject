@@ -5,16 +5,18 @@
  * @version 1.0.0
  */
 
-import React, { useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "./useAuth"
 import "./AppStyles.css"
 import axios from "axios"
 
-export default function Login({ onLogin }) {
+export default function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [message, setMessage] = useState("")
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   const handleLogin = async (event) => {
     event.preventDefault() // Förhindra att sidan laddas om
@@ -23,7 +25,9 @@ export default function Login({ onLogin }) {
         username,
         password,
       })
-      console.log("Login response:", response.data)
+      // console.log("Login response:", response.data) // fungerar, innehåller hela användarobjektet
+      login(response.data.user)
+      // Återställ inmatningsvärdet efter att ha sparat
       // Hantera inloggningssvar om det behövs
       setUsername("") // Återställ inmatningsvärdet efter att ha sparat
       setPassword("") // Återställ inmatningsvärdet efter att ha sparat
@@ -34,10 +38,10 @@ export default function Login({ onLogin }) {
       setMessage("Error logging in.")
     }
   }
-
+  
   return (
     <div className="form-container">
-      <h1>Login</h1>
+       <h1 className="form-title">Login</h1>
       {message && <p>{message}</p>}
       <form onSubmit={handleLogin}>
         <input
@@ -54,7 +58,8 @@ export default function Login({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
           className="form-input"
         />
-        <button type="submit" className="btn">
+        <br />
+        <button type="submit" className="link-btn">
           Login
         </button>
       </form>

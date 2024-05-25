@@ -7,14 +7,15 @@
 
 import React from "react"
 import ReactDOM from "react-dom/client"
+import { AuthProvider } from "./AuthProvider"
 import App from "./App.jsx"
 import "./index.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <AuthProvider> {/* Omge App med AuthProvider */}
     <div style={{ display: "flex", flexDirection: "column" }}>
       <App />
-
       <footer
         style={{
           marginTop: "auto",
@@ -27,5 +28,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         &copy; 2024 LNU
       </footer>
     </div>
+    </AuthProvider>
   </React.StrictMode>,
 )
