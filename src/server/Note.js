@@ -8,6 +8,11 @@ const noteSchema = new mongoose.Schema(
       required: true,
     },
     text: String,
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   {
     // Add and maintain createdAt and updatedAt fields.
