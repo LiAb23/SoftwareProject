@@ -51,7 +51,6 @@ userSchema.pre("save", async function (next) {
 userSchema.statics.authenticate = async function (username, password) {
   const user = await this.findOne({ username })
   if (!user || !(await bcryptjs.compare(password, user.password))) {
-    console.log("Authenticate: Invalid login credentials")
     throw new Error("Invalid login credentials") // skrivs ut
   }
   return user

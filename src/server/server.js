@@ -62,8 +62,6 @@ app.use(express.json())
 
 // Cors configuration
 // app.use((req, res, next) => { // ny
-//   console.log('Request headers:', req.headers) // ny
-//   console.log('Request origin:', req.headers.origin) // ny
 //   res.header('Access-Control-Allow-Origin', '*') // ändra?
 //   res.header('Access-Control-Allow-Origin', 'https://software-project-liard.vercel.app/') // ändra?
 //   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
@@ -82,7 +80,6 @@ app.use(express.json())
 //   { // ny
 //   origin: function (origin, callback) {
 //     // Kontrollera om ursprunget är i listan över tillåtna ursprung
-//     console.log('Request origin:', origin)
 
 //     if (!origin || allowedOrigins.includes(origin)) {
 //       callback(null, true)
@@ -139,23 +136,9 @@ mongoose
 // Create a new note
 app.post("/", async (req, res) => {
   try {
-    console.log("Session user:", req.session.user) // användaren är undefined
-    // console.log("Received POST request at /") // fungerar
-    // if (!req.session.user) {
-    //   return res.status(401).json({ error: "Unauthorized: User not logged in" })
-    // }
-
-    // console.log("User ID:", req.session.user._id)
-    // console.log("Request body:", req.body) // fungerar, innehåller användarens ID: Request body: { title: 'adsfa', text: '', createdBy: '6634b3c123f4beb417399d67' }
-
     const { title, text } = req.body
     // const createdBy = req.user._id
     // const createdBy = req.session.user._id
-
-    // Logga detaljer om anteckningen som ska skapas
-    console.log("Creating note with title:", title)
-    console.log("Creating note with text:", text)
-    // console.log("Creating note with createdBy:", createdBy)
 
     // const note = new Note({ title, text, createdBy })
     const note = new Note({ title, text })
@@ -192,7 +175,6 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
-    // console.log("Attempting to log in user:", req.body.username) // fungerar, skriver ut användarnamnet
     // Authenticate the user credentials against the database.
     const user = await User.authenticate(req.body.username, req.body.password)
 
@@ -200,9 +182,6 @@ app.post("/login", async (req, res) => {
       console.error("Authentication failed: No user returned")
       return res.status(401).json({ error: "Invalid credentials" })
     }
-
-    // console.log("User authenticated successfully:", user.username) // fungerar, skriver ut användarnamnet
-    // console.log("Full user object:", user) // fungerar, skriver ut hela användarobjektet
 
     // Regenerate the session to prevent fixation attacks.
     req.session.regenerate((err) => {
@@ -214,22 +193,15 @@ app.post("/login", async (req, res) => {
 
       // Tilldela ett ID till sessionen
       // const sessionId = req.sessionID
-      // console.log("Session ID:", sessionId) // fungerar, skriver ut sessionens ID
-
-      // console.log("Session regenerated successfully")
 
       // Mark user is logged in and store the authenticated user in the session.
       req.session.user = user
-      console.log("User added to session:", req.session.user)
 
       // // Set a flash message to indicate successful login.
       // req.session.flash = { type: 'success', text: 'You are now logged in' }
 
-      // console.log("User added to session:", user) // fungerar, skriver ut hela användarobjektet
-
       // res.redirect("./")
       // res.json({ message: `Welcome ${user.username}!` }) // fungerar
-      // console.log("Sending response with user object:", user) // fungerar, skriver ut hela användarobjektet
       res.json({ user })
     })
   } catch (error) {
@@ -243,35 +215,24 @@ app.post("/login", async (req, res) => {
 // Create a new note
 app.post("/my-board", async (req, res) => {
   try {
-    // console.log("Session user:", req.session.user)
-    // console.log("Received POST request at /my-board")
     // Kontrollera om användarens ID finns i sessionen
     // if (!req.session.user) {
     //   return res.status(401).json({ error: "Unauthorized: User not logged in" })
     // }
 
-    // console.log("User ID from session:", req.session.user._id)
-    console.log("Request body:", req.body)
-
     const { title, text, createdBy } = req.body
     // const createdBy = req.session.user._id // Hämta användarens ID från sessionen
-
-    console.log("Title:", title)
-    console.log("Text:", text)
-    console.log("Created by:", createdBy)
 
     // const note = new Note({ title, text, createdBy }) // Inkludera createdBy när du skapar anteckningen
     const note = new Note({ title, text, createdBy })
     await note.save()
 
-    console.log("Note created successfully:", note)
     res.status(201).json(note)
   } catch (error) {
     console.error("Error creating note:", error)
     res.status(500).json({ error: "Error creating note" })
   }
   // try {
-  //   console.log("User ID:", req.user._id)
   //   const { title, text } = req.body
   //   const createdBy = req.user._id // Hämta användarens ID från autentiseringsuppgifterna
   //   const note = new Note({ title, text, createdBy }) // Inkludera createdBy när du skapar anteckningen
@@ -286,7 +247,6 @@ app.post("/my-board", async (req, res) => {
 app.get("/my-board/:userId", async (req, res) => {
   try {
     const createdBy = req.params.userId
-    console.log("Fetching notes for user:", createdBy) // undefined
 
     const notes = await Note.find({ createdBy: createdBy })
     res.status(200).json(notes)
@@ -330,17 +290,14 @@ app.put("/my-board/:id", async (req, res) => {
 // Logout endpoint
 app.post("/logout", (req, res) => {
   try {
-    console.log("Session before logout:", req.session)
     // Förstör sessionen
     req.session.destroy((err) => {
       if (err) {
         console.error("Error destroying ", err)
         return res.status(500).json({ error: "Failed to logout" })
       }
-      console.log("User logged out successfully")
       res.json({ message: "Logout successful" })
     })
-    // console.log("Session after logout:", req.session) // fungerar, ger undefined
   } catch (error) {
     console.error("Error logging out user:", error)
     res.status(500).json({ error: "Failed to logout" })
