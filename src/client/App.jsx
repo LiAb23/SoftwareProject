@@ -1,36 +1,45 @@
 /**
+ * App component that sets up the main application routes and handles user authentication and logout.
  *
- *
- * @author Liv <lh224hh@student.lnu.se>
+ * @component
+ * @returns {JSX.Element} - Rendered App component
  * @version 1.0.0
+ * @author Liv <lh224hh@student.lnu.se>
  */
 
-// import React from 'react'
 import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import { useAuth } from "./useAuth"
-import "./AppStyles.css"
+import "./styles/AppStyles.css"
 import axios from "axios"
 import Board from "./Board.jsx"
 import Register from "./Register.jsx"
 import Login from "./Login.jsx"
 import MyBoard from "./MyBoard.jsx"
-import { FaSistrix, FaCog, FaRegQuestionCircle, FaHome, FaSignInAlt, FaSignOutAlt, FaUserPlus, FaUserCircle } from "react-icons/fa"
+import {
+  FaSistrix,
+  FaCog,
+  FaRegQuestionCircle,
+  FaHome,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUserPlus,
+  FaUserCircle,
+} from "react-icons/fa"
 import puppy from "./images/puppy.webp"
 import icon from "./images/icon.png"
 
-/**
- * Component that renders the app.
- *
- * @returns {JSX.Element}
- */
 export default function App() {
   const { user, logout } = useAuth()
   const [showLogoutMessage, setShowLogoutMessage] = useState(false)
 
+  /**
+   * Handles the logout of the user by sending a POST request to the server and updating the user state.
+   * @async
+   */
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:8080/logout") // Gör en POST-förfrågan till "/logout"
+      await axios.post("http://localhost:8080/logout")
       logout()
       setShowLogoutMessage(true)
     } catch (error) {
@@ -38,9 +47,11 @@ export default function App() {
     }
   }
 
+  /**
+   * Sets a timeout to hide the logout message after 3 seconds.'
+   * @effect
+   */
   useEffect(() => {
-    console.log("Session before logotout:", user)
-
     if (showLogoutMessage) {
       const timeoutId = setTimeout(() => {
         setShowLogoutMessage(false)
@@ -48,8 +59,6 @@ export default function App() {
 
       return () => clearTimeout(timeoutId)
     }
-
-    console.log("Session after logotout:", user)
   }, [showLogoutMessage, user])
 
   return (
@@ -63,24 +72,24 @@ export default function App() {
             <img src={icon} alt="Icon" className="icon" />
           </div>
           <div className="links-container">
-          <div>
-            {user && (
-              <div className="user-info">
-                <p className="log-message">
-                Logged in as: {' '}
-                <span className="username">{user.username}</span> {' '}
-                  <Link to="/my-board" className="avatar-link">
-                    <FaUserCircle />
-                  </Link>
-                </p>
-              </div>
-            )}
-            {showLogoutMessage && ( // Visa utloggningsmeddelandet om det är sant
-            <div className="log-message">
-              <p>Logged out successfully.</p>
+            <div>
+              {user && (
+                <div className="user-info">
+                  <p className="log-message">
+                    Logged in as:{" "}
+                    <span className="username">{user.username}</span>{" "}
+                    <Link to="/my-board" className="avatar-link">
+                      <FaUserCircle />
+                    </Link>
+                  </p>
+                </div>
+              )}
+              {showLogoutMessage && (
+                <div className="log-message">
+                  <p>Logged out successfully.</p>
+                </div>
+              )}
             </div>
-          )}
-          </div>
             {user ? (
               <Link to="/" onClick={handleLogout} className="link-btn">
                 Logout

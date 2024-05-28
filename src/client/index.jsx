@@ -1,29 +1,24 @@
 /**
+ * Main Entry Point component that sets up the root of the React application, wrapping the App component with an AuthProvider and adding a footer.
  *
- *
- * @author Liv <lh224hh@student.lnu.se>
+ * @component
+ * @returns {JSX.Element} - Rendered root component
  * @version 1.0.0
+ * @author Liv <lh224hh@student.lnu.se>
  */
 
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { AuthProvider } from "./AuthProvider"
 import App from "./App.jsx"
-import "./index.css"
+import "./styles/index.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider> {/* Omge App med AuthProvider */}
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <AuthProvider>
+    <div className="flex-container">
       <App />
-      <footer
-        style={{
-          marginTop: "auto",
-          width: "100%",
-          textAlign: "left",
-          padding: "10px",
-        }}
-      >
+      <footer className="footer">
         {" "}
         &copy; 2024 LNU
       </footer>

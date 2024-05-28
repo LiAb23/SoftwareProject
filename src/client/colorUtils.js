@@ -1,5 +1,12 @@
+/**
+ * Function that returns the next color in a sequence of alternating yellow, blue and pink.
+ *
+ * @param {string} currentColor - The current color that needs to be alternated.
+ * @returns {string} - The next color in the sequence.
+ * @version 1.0.0
+ * @author Liv <lh224hh@student.lnu.se>
+ */
 
-// Flytta ut funktionen här
 export function alternateColor(currentColor) {
   if (currentColor === "yellow") {
     return "blue"

@@ -1,14 +1,16 @@
 /**
+ * Login component that renders a login form and handles the login process.
  *
- *
- * @author Liv <lh224hh@student.lnu.se>
+ * @component
+ * @returns {JSX.Element} - Rendered Login component
  * @version 1.0.0
+ * @author Liv <lh224hh@student.lnu.se>
  */
 
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "./useAuth"
-import "./AppStyles.css"
+import "./styles/AppStyles.css"
 import axios from "axios"
 
 export default function Login() {
@@ -18,19 +20,19 @@ export default function Login() {
   const navigate = useNavigate()
   const { login } = useAuth()
 
+  /**
+   * Handles the login process by sending a POST request to the server and navigating to the my-board page if successful.
+   */
   const handleLogin = async (event) => {
-    event.preventDefault() // Förhindra att sidan laddas om
+    event.preventDefault()
     try {
       const response = await axios.post("http://localhost:8080/login", {
         username,
         password,
       })
-      // console.log("Login response:", response.data) // fungerar, innehåller hela användarobjektet
       login(response.data.user)
-      // Återställ inmatningsvärdet efter att ha sparat
-      // Hantera inloggningssvar om det behövs
-      setUsername("") // Återställ inmatningsvärdet efter att ha sparat
-      setPassword("") // Återställ inmatningsvärdet efter att ha sparat
+      setUsername("") 
+      setPassword("") 
       setMessage(response.data.message)
       navigate("/my-board")
     } catch (error) {

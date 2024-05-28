@@ -1,7 +1,22 @@
+/**
+ * MiniStickyNote component that renders a mini sticky note with a title, a text and a timestamp. It includes a star icon to toggle the note as a priority note and a pen icon to edit the note.
+ *
+ * @component
+ * @param {object} props - Component props
+ * @param {string} props.color - The color of the sticky note
+ * @param {string} props.title - The title of the sticky note
+ * @param {string} props.text - The text of the sticky note
+ * @param {string} props.timestamp - The timestamp of the sticky note
+ * @returns {JSX.Element} - Rendered MiniStickyNote component
+ * @version 1.0.0
+ * @author Liv <lh224hh@student.lnu.se>
+ */
+
 import { useState } from "react"
 import PropTypes from 'prop-types'
-import "./StickyNoteStyles.css"
+import "./styles/StickyNoteStyles.css"
 import { FaPencilAlt, FaRegStar, FaStar } from "react-icons/fa"
+import Draggable from "react-draggable"
 
 export default function MiniStickyNote({ color, title, text, timestamp }) {
   const [isStarred, setIsStarred] = useState(false)
@@ -11,6 +26,7 @@ export default function MiniStickyNote({ color, title, text, timestamp }) {
   }
 
   return (
+    <Draggable bounds="parent">
       <div className={`mini-sticky-note ${color}`}>
         {isStarred ? (
           <FaStar className="star-icon" onClick={toggleStar} />
@@ -24,6 +40,7 @@ export default function MiniStickyNote({ color, title, text, timestamp }) {
         </div>
         <FaPencilAlt className="pen-icon" />
       </div>
+      </Draggable>
   )
 }
 

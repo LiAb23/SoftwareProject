@@ -1,14 +1,15 @@
 /**
+ * StickyNote component that renders a sticky note with a title, a text and a timestamp. It includes a star icon to toggle the note as a priority note and a pen icon to edit the note.
  *
- *
- * @author Liv <lh224hh@student.lnu.se>
+ * @component
+ * @returns {JSX.Element} - Rendered StickyNote component
  * @version 1.0.0
+ * @author Liv <lh224hh@student.lnu.se>
  */
 
-// StickyNote.jsx
 import { useState } from "react"
 import PropTypes from 'prop-types'
-import "./StickyNoteStyles.css"
+import "./styles/StickyNoteStyles.css"
 import { FaPencilAlt, FaRegStar, FaStar } from "react-icons/fa"
 import Draggable from "react-draggable"
 

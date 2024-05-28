@@ -1,4 +1,13 @@
-import "./AppStyles.css"
+/**
+ * BottomBar component that renders a bottom bar including navigational arrows and a series of MiniStickyNote components.
+ *
+ * @component
+ * @returns {JSX.Element} - Rendered BottomBar component
+ * @version 1.0.0
+ * @author Liv <lh224hh@student.lnu.se>
+ */
+
+import "./styles/AppStyles.css"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
 import MiniStickyNote from "./MiniStickyNote"
 

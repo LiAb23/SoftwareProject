@@ -1,0 +1,171 @@
+/**
+ * Styles for the App component.
+ *
+ * @author Liv <lh224hh@student.lnu.se>
+ * @version 1.0.0
+ */
+
+#root {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(241, 234, 243, 0.987);
+  height: 100vh;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picture-container {
+  margin-right: 20px;
+  border: 2px solid #ccc;
+}
+
+.title-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.links-container {
+  text-align: right;
+}
+
+.img {
+  width: 20%;
+  height: auto;
+  display: block;
+}
+
+.title {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.icon {
+  width: 65px;
+  height: 65px;
+}
+
+h1 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+div.login-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+input.login-input {
+  margin-bottom: 10px;
+}
+
+.link-btn {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  padding: 10px 20px;
+  background-color: #68c7f3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+  width: 120px;
+  cursor: pointer;
+  border: none;
+}
+
+.link-btn:hover {
+  background-color: #f3c6ef;
+}
+
+.btn-icon {
+  margin-left: 8px;
+  font-size: 22px;
+}
+
+.log-message {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.username {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+}
+
+.avatar-link {
+  font-size: 40px;
+  color: #68c7f3;
+  padding-left: 5px;
+}
+
+.avatar-link:hover {
+  color: #f3c6ef;
+}
+
+.help-icon {
+  font-size: 20px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.cog-icon {
+  font-size: 20px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.search-icon-wrapper {
+  position: relative;
+  margin-right: -176px;
+}
+
+.search-input {
+  width: 220px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  font-size: 20px;
+  right: -55px;
+  font-size: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.start-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

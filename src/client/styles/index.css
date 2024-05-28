@@ -1,0 +1,25 @@
+/**
+ * Styles for the entire application.
+ *
+ * @author Liv <lh224hh@student.lnu.se>
+ * @version 1.0.0
+ */
+ 
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: grey;
+  /* background-color: rgba(164, 226, 254, 0.9); */
+  background-color: rgba(241, 234, 243, 0.987);
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+}

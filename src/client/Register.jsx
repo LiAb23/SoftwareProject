@@ -1,14 +1,15 @@
 /**
+ * Register component that renders a registration form and handles the registration process.
  *
- *
- * @author Liv <lh224hh@student.lnu.se>
+ * @component
+ * @returns {JSX.Element} - Rendered Register component
  * @version 1.0.0
+ * @author Liv <lh224hh@student.lnu.se>
  */
 
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import "./AppStyles.css"
-import "./RegisterStyles.css"
+import "./styles/RegisterLoginStyles.css"
 import axios from "axios"
 
 export default function Register() {
@@ -21,16 +22,17 @@ export default function Register() {
   const [successMessage, setSuccessMessage] = useState("")
   const navigate = useNavigate()
 
+  /**
+   * Handles the registration process by sending a POST request to the server and navigating to the login page if successful.
+   */
   const handleRegistration = async (event) => {
     event.preventDefault()
 
-    // Validera användarnamnet
     if (username.length < 3 || username.length > 256) {
       setError("Username must be between 3 and 256 characters.")
       return
     }
 
-    // Lägg till validering för att säkerställa att lösenord och bekräfta lösenord är samma
     if (password !== repeatPassword) {
       setError("Passwords do not match!")
       return
@@ -44,14 +46,13 @@ export default function Register() {
         email,
         termsAccepted,
       })
-      setUsername("") // Återställ inmatningsvärdet efter att ha sparat
-      setPassword("") // Återställ inmatningsvärdet efter att ha sparat
-      setRepeatPassword("") // Återställ inmatningsvärdet efter att ha sparat
-      setEmail("") // Återställ inmatningsvärdet efter att ha sparat
-      setTermsAccepted(false) // Återställ inmatningsvärdet efter att ha sparat
+      setUsername("") 
+      setPassword("") 
+      setRepeatPassword("") 
+      setEmail("") 
+      setTermsAccepted(false) 
       navigate("/login")
-      setSuccessMessage("Your registration was successful.") // Visa meddelande om lyckad sparning
-      // Visa meddelandet i 2 sekunder innan det försvinner
+      setSuccessMessage("Your registration was successful.") 
       setTimeout(() => {
         setSuccessMessage("")
       }, 2000)

@@ -1,0 +1,72 @@
+/**
+ * Styles for the Register and Login components.
+ *
+ * @author Liv <lh224hh@student.lnu.se>
+ * @version 1.0.0
+ */
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.form-container {
+  background-color: rgba(221, 204, 233, 0.4);
+  width: 600px;
+  height: 485px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-title {
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.form-input {
+  width: 80%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-input.narrow {
+  max-width: 300px; 
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 135px;
+}
+
+.link-text {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-text:hover {
+  text-decoration: none;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}
