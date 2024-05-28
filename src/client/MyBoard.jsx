@@ -142,8 +142,8 @@ export default function MyBoard() {
           setSuccessMessage("")
         }, 3000)
       } else {
-        // const response = await axios.post("http://localhost:8080/my-board", {
-          const response = await axios.post('https://software-project-liard.vercel.app/', {
+        const response = await axios.post("http://localhost:8080/my-board", {
+          // const response = await axios.post('https://software-project-liard.vercel.app/my-board', {
           title: titleValue,
           text: textValue,
           createdBy: user._id,
