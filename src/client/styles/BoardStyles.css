@@ -191,6 +191,7 @@
   transform: translate(-50%, -70%); 
   width: 300px; 
   z-index: 1000;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .close-icon {
@@ -209,9 +210,28 @@
 .note-form form {
   display: flex;
   flex-direction: column; 
-  align-items: center; 
-  justify-content: center;
-  text-align: center;
+  align-items: flex-start;
+}
+
+.form-header {
+  font-size: 1.2rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-title {
+  margin-left: -74px;
 }
 
 .form-text {
@@ -230,7 +250,12 @@
   border-radius: 5px; 
   width: 100%; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 50px;
+  height: 70px;
+}
+
+.form-btn {
+  display: block;
+  margin: 0 auto;
 }
 
 .icon-container {
@@ -242,7 +267,8 @@
   height: 90px; 
   border-radius: 50%;
   /* background-color: rgb(164, 225, 254, 0.8); */
-  background-color: rgba(221, 204, 233, 0.8);
+  background-color: rgba(236, 220, 246, 0.8);
+  border: 2px solid #ccc;
   display: flex;
   display: flex;
   justify-content: center;
@@ -274,6 +300,7 @@
   z-index: 1000;
   border-radius: 8px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .modal-content {

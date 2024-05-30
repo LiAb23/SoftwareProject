@@ -1,5 +1,5 @@
 /**
- *
+ * MyBoard component that renders the personal main board with sticky notes, sidebar and bottom bar including functionality to add, edit and delete notes.
  *
  * @component
  * @returns {JSX.Element} - Rendered MyBoard component
@@ -32,6 +32,9 @@ export default function MyBoard() {
 
   const { user } = useAuth()
 
+  /**
+   * Fetches personal notes for the logged-in user when the component mounts or the user changes.
+   */
   useEffect(() => {
     const fetchNotes = async () => {
       try {
@@ -69,6 +72,11 @@ export default function MyBoard() {
     }
   }, [user, navigate])
 
+  /**
+   * Handles the click event to start editing a note.
+   *
+   * @param {number} index - Index of the note to edit.
+   */
   const handleEditClick = (index) => {
     const selectedNote = notes[index]
     setEditNote(selectedNote)
@@ -77,6 +85,9 @@ export default function MyBoard() {
     setShowNoteForm(true)
   }
 
+  /**
+   * Opens a modal to choose a type if note form is not already open.
+   */
   const handleModalOpen = () => {
     if (showNoteForm) {
       return
@@ -84,10 +95,18 @@ export default function MyBoard() {
     setShowModal(true)
   }
 
+  /**
+   * Closes the modal.
+   */
   const handleModalClose = () => {
     setShowModal(false)
   }
 
+  /**
+   * Handles the selection of type and opens the note form if 'note' is selected.
+   *
+   * @param {string} type - The type of element to create (either 'note' or 'list').
+   */
   const handleNoteTypeSelection = (type) => {
     if (type === "note") {
       setShowNoteForm(true)
@@ -97,6 +116,11 @@ export default function MyBoard() {
     handleModalClose()
   }
 
+  /**
+   * Handles the form submission for creating or updating a note.
+   *
+   * @param {React.FormEvent<HTMLFormElement>} event - Form submission event.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -115,7 +139,7 @@ export default function MyBoard() {
           timestamp: `${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })}`,
         }
 
-        const response = await axios.put(
+        await axios.put(
           `http://localhost:8080/my-board/${editNote._id}`,
           updatedNote
         )
@@ -142,7 +166,7 @@ export default function MyBoard() {
           setSuccessMessage("")
         }, 3000)
       } else {
-        const response = await axios.post("http://localhost:8080/my-board", {
+        await axios.post("http://localhost:8080/my-board", {
           // const response = await axios.post('https://software-project-liard.vercel.app/my-board', {
           title: titleValue,
           text: textValue,
@@ -172,11 +196,19 @@ export default function MyBoard() {
     }
   }
 
+  /**
+   * Handles the click event to show the delete confirmation modal.
+   *
+   * @param {number} index - Index of the note to delete.
+   */
   const handleTrashClick = (index) => {
     setSelectedNoteIndex(index)
     setShowTrashModal(true)
   }
 
+  /**
+   * Confirms the deletion of the selected note.
+   */
   const handleConfirmDelete = () => {
     const updatedNotes = [...notes]
     updatedNotes.splice(selectedNoteIndex, 1)
@@ -184,6 +216,9 @@ export default function MyBoard() {
     setShowTrashModal(false)
   }
 
+  /**
+   * Cancels the deletion of the selected note.
+   */
   const handleCancelDelete = () => {
     setShowTrashModal(false)
   }
@@ -203,9 +238,11 @@ export default function MyBoard() {
                     className="close-icon"
                     onClick={() => setShowNoteForm(false)}
                   />
+                  <div className="form-header">
                   <h3>Add new note</h3>
-                  <div>
-                    <p className="form-text">Title (mandatory)</p>
+                  </div>
+                  <div className="form-group">
+                    <p className="form-title">Title (mandatory)</p>
                     <input
                       className="form-input"
                       type="text"
@@ -222,7 +259,7 @@ export default function MyBoard() {
                     onChange={(e) => setTextValue(e.target.value)}
                   />{" "}
                   <br />
-                  <button type="submit" className="link-btn">
+                  <button type="submit" className="link-btn form-btn">
                     {editNote ? "Update note" : "Create note"}
                   </button>
                   {successMessage && <p>{successMessage}</p>}

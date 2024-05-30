@@ -108,13 +108,13 @@ export default function Board() {
             <StickyNote
               color="pink"
               title="Todo 1"
-              text="Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor."
+              text="This is a welcome example note to get you started with your board."
               timestamp={generateTimestamp()}
             />
             <StickyNote
               color="yellow"
               title="Todo 2"
-              text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus."
+              text="In this application you can create your own board with personal sticky notes. You can also create your own lists and add items to them as you can see on the lefthand side."
               timestamp={generateTimestamp()}
             />
             <StickyNote
@@ -122,11 +122,10 @@ export default function Board() {
               title="Todo 3"
               text={
                 <>
-                  Cras elementum ultrices diam.
+                  You can move the notes around by dragging them. 
                   <br />
                   <br />
-                  Maecenas ligula massa, varius a, semper congue, euismod non,
-                  mi.
+                  You can also prioritize, edit and delete them.
                 </>
               }
               timestamp={generateTimestamp()}
@@ -139,7 +138,7 @@ export default function Board() {
                     onClick={() => setShowNoteForm(false)}
                   />
                   <h3>Add new note</h3>
-                  <div>
+                  <div className="form-group">
                     <p className="form-text">Title (mandatory)</p>
                     <input
                       className="form-input"

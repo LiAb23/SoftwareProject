@@ -15,8 +15,8 @@ import Draggable from "react-draggable"
 export default function SideBar() {
   const list1Items = ["Mark: 23 June", "Julia: 2 July", "Mom: 13 Aug"]
   const list2Items = ["1984 - George Orwell", "The Alchemist - Paulo Coelho", "The Catcher in the Rye - av J.D. Salinger"]
-  const list3Items = ["1", "2", "3"]
-  const list4Items = ["4", "5", "6"]
+  const list3Items = ["Soap", "Stamp", "Face cream"]
+  const list4Items = ["1", "2", "3"]
 
   /**
    * State for tracking starred status of lists.
@@ -141,7 +141,7 @@ export default function SideBar() {
      <Draggable bounds="parent">
       <div className="list-container">
         <div className="list-header">
-        <h3 className="list-title">Last list:
+        <h3 className="list-title">Shopping List:
           </h3>
           <FaPencilAlt className="list-pen-icon" />
           {starred.list3 ? (
