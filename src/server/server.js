@@ -94,7 +94,7 @@ app.use(express.json())
  * @property {boolean} credentials - Configures the Access-Control-Allow-Credentials CORS header.
  */
 const corsOptions = {
-  origin: "http://localhost:5173", // "https://software-project-liard.vercel.app",
+  origin: "http://localhost:5173",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200, 

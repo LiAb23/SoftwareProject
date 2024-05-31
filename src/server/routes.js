@@ -179,6 +179,32 @@ router.put("/my-board/:id", async (req, res) => {
 })
 
 /**
+ * Route for deleting a specific note.
+ *
+ * @name DELETE/my-board/:id
+ * @function
+ * @memberof module:routes
+ * @inner
+ * @param {express.Request} req - Express request object
+ * @param {express.Response} res - Express response object
+ */
+router.delete('/my-board/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const deletedNote = await Note.findByIdAndDelete(id)
+
+    if (!deletedNote) {
+      return res.status(404).json({ message: 'Note not found' })
+    }
+
+    res.status(200).json({ message: 'Note deleted successfully' })
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting note', error })
+  }
+})
+
+/**
  * Route for logging out a user.
  *
  * @name POST/logout
