@@ -167,7 +167,6 @@ export default function MyBoard() {
         }, 3000)
       } else {
         await axios.post("http://localhost:8080/my-board", {
-          // const response = await axios.post('https://software-project-liard.vercel.app/my-board', {
           title: titleValue,
           text: textValue,
           createdBy: user._id,
@@ -177,7 +176,7 @@ export default function MyBoard() {
         setTextValue("")
         setSuccessMessage("Your note was successfully saved.")
         setShowNoteForm(false)
-        
+
         const newNote = {
           color: alternateColor(notes[notes.length - 1]?.color || "pink"),
           title: titleValue,
@@ -207,13 +206,32 @@ export default function MyBoard() {
   }
 
   /**
-   * Confirms the deletion of the selected note.
+   * Handles the confirmation of the deletion of a selected note by sending a DELETE request to the server.
    */
-  const handleConfirmDelete = () => {
-    const updatedNotes = [...notes]
-    updatedNotes.splice(selectedNoteIndex, 1)
-    setNotes(updatedNotes)
-    setShowTrashModal(false)
+  const handleConfirmDelete = async () => {
+    if (selectedNoteIndex !== null && notes[selectedNoteIndex]) {
+      const noteToDelete = notes[selectedNoteIndex]
+
+      try {
+        await axios.delete(`http://localhost:8080/my-board/${noteToDelete._id}`)
+
+        const updatedNotes = notes.filter(
+          (_, index) => index !== selectedNoteIndex
+        )
+        setNotes(updatedNotes)
+        setShowTrashModal(false)
+
+        if (editNote && editNote._id === noteToDelete._id) {
+          setEditNote(null)
+          setTitleValue("")
+          setTextValue("")
+          setShowNoteForm(false)
+        }
+      } catch (error) {
+        console.error("Error deleting note:", error)
+        alert("Error deleting note: " + error.message)
+      }
+    }
   }
 
   /**
@@ -239,7 +257,7 @@ export default function MyBoard() {
                     onClick={() => setShowNoteForm(false)}
                   />
                   <div className="form-header">
-                  <h3>Add new note</h3>
+                    <h3>{editNote ? "Edit note" : "Add new note"}</h3>
                   </div>
                   <div className="form-group">
                     <p className="form-title">Title (mandatory)</p>
@@ -247,7 +265,7 @@ export default function MyBoard() {
                       className="form-input"
                       type="text"
                       placeholder="Title"
-                      value={editNote ? editNote.title : titleValue}
+                      value={titleValue}
                       onChange={(e) => setTitleValue(e.target.value)}
                     />
                   </div>
@@ -255,13 +273,26 @@ export default function MyBoard() {
                   <textarea
                     className="form-textarea"
                     placeholder="Text"
-                    value={editNote ? editNote.text : textValue}
+                    value={textValue}
                     onChange={(e) => setTextValue(e.target.value)}
                   />{" "}
                   <br />
                   <button type="submit" className="link-btn form-btn">
                     {editNote ? "Update note" : "Create note"}
                   </button>
+                  {editNote && (
+                    <button
+                      type="button"
+                      className="link-btn form-btn delete-btn styled-delete-btn"
+                      onClick={() =>
+                        handleTrashClick(
+                          notes.findIndex((note) => note._id === editNote._id)
+                        )
+                      }
+                    >
+                      Delete note
+                    </button>
+                  )}
                   {successMessage && <p>{successMessage}</p>}
                 </form>
               </div>
@@ -285,7 +316,7 @@ export default function MyBoard() {
                   className="plus-icon"
                   onClick={handleModalOpen}
                 />
-                <FaRegTrashAlt onClick={handleTrashClick} />
+                <FaRegTrashAlt />
                 <div className="trash-bin"></div>
               </div>
             </div>

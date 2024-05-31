@@ -258,6 +258,10 @@
   margin: 0 auto;
 }
 
+.styled-delete-btn {
+  margin-top: 10px;
+}
+
 .icon-container {
   position: fixed;
   bottom: 165px; 
@@ -291,9 +295,9 @@
 
 .modal {
   position: fixed;
-  top: 70%;
+  top: 65%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-40%, -30%);
   background-color: rgba(245, 245, 255, 0.834);
   border: 1px solid #ccc;
   padding: 20px;
